@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../action/action";
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>("admin");
@@ -7,25 +8,10 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
-    console.log("🚀 ~ handleLogin ~ { username, password }:", { username, password });
     e.preventDefault();
-    try {
-      const response = await fetch(`https://backend-company-revenue.hackimtech.com/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ username, password }),
-      });
-      if (!response.ok) {
-        throw new Error("Login failed");
-      }
-      const data = await response.json();
-      localStorage.setItem("access_token", data.access_token);
-      navigate("/dashboard");
-    } catch (error) {
-      console.error("Login error:", error);
-    }
+    const data = await login(username, password);
+    localStorage.setItem("access_token", data.access_token);
+    navigate("/dashboard");
   };
 
   return (
