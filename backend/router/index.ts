@@ -9,5 +9,7 @@ router.get("/", (req, res) => {
 });
 router.post("/login", UserController.login);
 router.get("/companies", authentication, CompanieController.getAllCompanies);
+router.get("/company/:id", authentication, CompanieController.getCompanyById);
+router.get("/company", authentication, CompanieController.searchCompany);
 
 export { router };

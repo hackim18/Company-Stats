@@ -12,7 +12,6 @@ class UserController {
         throw { name: "BadRequest", message: "Username and password are required" };
       }
       const result = (await database.collection("users").findOne({ username })) as user;
-      console.log("🚀 ~ UserController ~ login ~ result:", result);
       if (!result) {
         throw { name: "NotFound", message: "User not found" };
       }
