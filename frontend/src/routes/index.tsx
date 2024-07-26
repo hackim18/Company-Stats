@@ -1,7 +1,9 @@
 import { createBrowserRouter, redirect } from "react-router-dom";
 import Login from "../views/Login";
 import Navbar from "../components/Navbar";
-import Home from "../views/Home";
+import ChartPage from "../views/Chart";
+import TablePage from "../views/Table";
+import Footer from "../components/Footer";
 
 const router = createBrowserRouter([
   {
@@ -9,14 +11,15 @@ const router = createBrowserRouter([
     element: (
       <>
         <Navbar />
+        <Footer />
       </>
     ),
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <ChartPage />,
         loader: async () => {
-          return localStorage.getItem("access_token") ? redirect("/dashboard") : null;
+          return localStorage.getItem("access_token") ? redirect("/chart") : null;
         },
       },
       {
@@ -24,8 +27,15 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/dashboard",
-        element: <Home />,
+        path: "/chart",
+        element: <ChartPage />,
+        loader: async () => {
+          return !localStorage.getItem("access_token") ? redirect("/login") : null;
+        },
+      },
+      {
+        path: "/table",
+        element: <TablePage />,
         loader: async () => {
           return !localStorage.getItem("access_token") ? redirect("/login") : null;
         },
