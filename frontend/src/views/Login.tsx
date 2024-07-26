@@ -12,7 +12,7 @@ const Login: React.FC = () => {
     e.preventDefault();
     const data = await login(username, password);
     localStorage.setItem("access_token", data.access_token);
-    navigate("/chart");
+    navigate("/");
   };
 
   return (
