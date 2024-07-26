@@ -16,27 +16,29 @@ const router = createBrowserRouter([
     ),
     children: [
       {
-        element: <ChartPage />,
+        path: "/login",
+        element: <Login />,
+      },
+      {
         path: "/",
+        element: <ChartPage />,
         loader: async () => {
           return !localStorage.getItem("access_token") ? redirect("/login") : null;
         },
       },
+
       {
-        element: <Login />,
-        path: "/login",
-        loader: async () => {
-          return localStorage.getItem("access_token") ? redirect("/") : null;
-        },
-      },
-      {
-        element: <TablePage />,
         path: "/table",
+        element: <TablePage />,
         loader: async () => {
           return !localStorage.getItem("access_token") ? redirect("/login") : null;
         },
       },
     ],
+  },
+  {
+    path: "*",
+    element: <h1>Not Found</h1>,
   },
 ]);
 

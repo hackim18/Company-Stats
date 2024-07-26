@@ -31,7 +31,6 @@ const Login: React.FC = () => {
                   className="input input-bordered w-full mt-2"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  required
                 />
               </div>
               <div className="mt-4">
@@ -42,7 +41,6 @@ const Login: React.FC = () => {
                   className="input input-bordered w-full mt-2"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  required
                 />
               </div>
               <div className="mt-6">
