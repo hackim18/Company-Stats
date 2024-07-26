@@ -1,6 +1,5 @@
 import React from "react";
 import { Bar, Line, Pie, Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS } from "chart.js";
 import "../chartSetup";
 import { Company } from "../types/companie";
 
