@@ -1,0 +1,38 @@
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  LineElement,
+  PointElement,
+  ArcElement,
+  Filler,
+  RadarController,
+  PolarAreaController,
+  DoughnutController,
+  PieController,
+  LineController,
+  BarController,
+} from "chart.js";
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  LineElement,
+  PointElement,
+  ArcElement,
+  RadarController,
+  PolarAreaController,
+  DoughnutController,
+  PieController,
+  LineController,
+  BarController,
+  Filler,
+  Title,
+  Tooltip,
+  Legend
+);
